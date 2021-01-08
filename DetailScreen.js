@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 
 function DetailScreen({navigation, route}){
-  const {user} = route.params;
-  const {name, bio, avatar_url} = user;
+  const {pokemon} = route.params;
+  const {name, weight} = pokemon;
   return(
     <View style ={{flex:1, alignItems:'center', justifyContent:'center'}} >
-      <Image source={{uri:avatar_url}} 
+      <Image 
         style={{
           width:120,
           height:120,
@@ -18,7 +18,7 @@ function DetailScreen({navigation, route}){
         }}
       ></Image>
       <Text style ={{fontSize:20, textAlign:'center'}} >{name}</Text>
-      <Text style = {{fontSize:12, textAlign:'center'}} >{bio}</Text>
+      <Text style = {{fontSize:12, textAlign:'center'}} >{weight}</Text>
     </View>
   )
 }

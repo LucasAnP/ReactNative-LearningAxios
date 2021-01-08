@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, Text, TextInput, StyleSheet, ActivityIndicator} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 
 function HomeScreen({navigation}){
  //useState para receber valor
- const[user, setUser] = useState('niubajr19');
+ const[pokemon, setPokemon] = useState('charmander');
  const[loading, setLoading] = useState(false);
 
- const url = `https://api.github.com/users/${user}`;
+ const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
  const submit = async() => {
    // Demora, não acontece instantaneamente. (asynx, await)
@@ -16,7 +16,7 @@ function HomeScreen({navigation}){
    
    try{
     const response = await axios.get(url);
-    navigation.navigate('Detail', {user:response.data});
+    navigation.navigate('Detail', {pokemon:response.data});
    }catch(error){
      alert('Usuário não encontrado, tente novamente');
    }
@@ -25,8 +25,8 @@ function HomeScreen({navigation}){
   }
   return(
     <View style ={{flex:1, alignItems:'center', justifyContent:'center'}} >
-      <Text style={styles.title} >Buscar Usuário</Text>
-      <TextInput style={styles.input} value={user} onChangeText={setUser} ></TextInput>
+      <Text style={styles.title} >Buscar Pokemon</Text>
+      <TextInput style={styles.input} value={pokemon} onChangeText={setPokemon} ></TextInput>
       <TouchableOpacity 
       disabled={loading}
       style={styles.button} title="Nova Tela" onPress={ () => {
