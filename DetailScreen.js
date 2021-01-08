@@ -3,10 +3,10 @@ import {View, Text, Image} from 'react-native';
 
 function DetailScreen({navigation, route}){
   const {pokemon} = route.params;
-  const {name, weight} = pokemon;
+  const {name, weight, sprites} = pokemon;
   return(
     <View style ={{flex:1, alignItems:'center', justifyContent:'center'}} >
-      <Image 
+      <Image source={{uri:sprites.front_default}}
         style={{
           width:120,
           height:120,
